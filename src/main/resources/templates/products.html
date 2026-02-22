@@ -46,6 +46,12 @@
     <option th:selected="${sortBy == 'price'}" value="price">Sort : Price</option>
   </select>
 
+  <!-- Sort Order -->
+  <select class="form-select" name="sortDir">
+   	<option value="asc"  th:selected="${sortDir == null || sortDir == 'asc'}">ASC</option>
+    <option value="desc" th:selected="${sortDir == 'desc'}">DESC</option>
+  </select>
+
   <!-- Page Size -->
   <select class="form-select w-auto" name="size">
     <option th:selected="${size == 10}" value="10">10 per page</option>
@@ -53,22 +59,17 @@
     <option th:selected="${size == 50}" value="50">50 per page</option>
   </select>
 
-  <!-- Search Input -->
-  <input class="form-control"
-         name="query"
-         placeholder="Search by SKU or Name"
-         th:value="${query}">
+  <!-- Select Page -->
+  <input type="text" name="page" th:value="${page}-1" placeholder="Go To Page">
 
+  <!-- Search Input -->
+  <input class="form-control" name="query" placeholder="Search by SKU or Name" th:value="${query}">
   <!-- Search Button -->
   <button class="btn btn-ocean" type="submit">Search</button>
 
   <!-- Reset Button -->
-  <a class="btn btn-outline-secondary"
-     th:href="@{/ui/products}">
-     Reset
-  </a>
+  <a class="btn btn-outline-secondary" th:href="@{/ui/products}">Reset</a>
 
-  <input type="text" name="page" value="${page}">
 </form>
   
       <div class="table-responsive">
