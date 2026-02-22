@@ -36,43 +36,41 @@
 
   <div class="card card-ocean p-4">
     <div class="card-body">
+     <form class="d-flex align-items-center gap-2 mb-3" method="get" th:action="@{/ui/products}">
+  <!-- Sort By -->
+  <select class="form-select w-auto" name="sortBy">
+    <option th:selected="${sortBy == 'id'}" value="id">Sort : ID</option>
+    <option th:selected="${sortBy == 'sku'}" value="sku">Sort : SKU</option>
+    <option th:selected="${sortBy == 'name'}" value="name">Sort : Name</option>
+    <option th:selected="${sortBy == 'quantity'}" value="quantity">Sort : Qty</option>
+    <option th:selected="${sortBy == 'price'}" value="price">Sort : Price</option>
+  </select>
 
-      <form class="row g-2 align-items-center mb-3" method="get" th:action="@{/ui/products}">
-       
-        <div class="col-6 col-md-2">
-          <select class="form-select" name="sortBy">
-            <option th:selected="${sortBy == 'id'}" value="id">Sort : ID</option>
-            <option th:selected="${sortBy == 'sku'}" value="sku">Sort : SKU</option>
-            <option th:selected="${sortBy == 'name'}" value="name">Sort : Name</option>
-            <option th:selected="${sortBy == 'quantity'}" value="quantity">Sort : Qty</option>
-            <option th:selected="${sortBy == 'price'}" value="price">Sort : Price</option>
-          </select>
-        </div>
-         
-        <div class="col-6 col-md-2">
-          <select class="form-select" name="size">
-            <option th:selected="${size == 10}" value="10">10 per page</option>
-            <option th:selected="${size == 20}" value="20">20 per page</option>
-            <option th:selected="${size == 50}" value="50">50 per page</option>
-          </select>
-        </div>
+  <!-- Page Size -->
+  <select class="form-select w-auto" name="size">
+    <option th:selected="${size == 10}" value="10">10 per page</option>
+    <option th:selected="${size == 20}" value="20">20 per page</option>
+    <option th:selected="${size == 50}" value="50">50 per page</option>
+  </select>
 
- 	<div class="col-12 col-md-6">
-          <input class="form-control" name="query" placeholder="Search by SKU or Name" th:value="${query}" required=true>
-        </div>
-        
-        <div class="col-12 col-md-2 d-grid">
-          <button class="btn btn-ocean" type="submit">Search</button>
-        </div>
-        
-        <div class="col-12 col-md-2 d-grid">
- 		 <a class="btn btn-outline-secondary" th:href="@{/ui/products}">Reset</a>
-		</div>
+  <!-- Search Input -->
+  <input class="form-control"
+         name="query"
+         placeholder="Search by SKU or Name"
+         th:value="${query}">
 
-        <input type="hidden" name="sortDir" th:value="${sortDir}">
-        <input type="hidden" name="page" value="0">
-      </form>
+  <!-- Search Button -->
+  <button class="btn btn-ocean" type="submit">Search</button>
 
+  <!-- Reset Button -->
+  <a class="btn btn-outline-secondary"
+     th:href="@{/ui/products}">
+     Reset
+  </a>
+
+  <input type="text" name="page" value="${page}">
+</form>
+  
       <div class="table-responsive">
         <table class="table table-hover align-middle">
           <thead class="table-dark">
@@ -102,12 +100,11 @@
 
               <td class="text-end">
                 <div class="btn-group btn-group-sm" role="group">
-                  <a class="btn btn-ocean-outline me-2" th:href="@{|/ui/products/${p.id}/edit|}">Edit</a>
-                  <a class="btn btn btn-ocean-outline btn-outline-secondary me-2" th:href="@{|/ui/products/${p.id}/stock|}">Stock</a>
+                  <a class="btn btn-outline-primary me-2" th:href="@{|/ui/products/${p.id}/edit|}">Edit</a>
+                  <a class="btn btn-outline-secondary me-2" th:href="@{|/ui/products/${p.id}/stock|}">Stock</a>
 
-                  <form th:action="@{|/ui/products/${p.id}/delete|}" method="post"
-                        onsubmit="return confirm('Delete this product?');" style="display:inline;">
-                    <button class="btn btn-ocean-outline btn-outline-danger" type="submit">Delete</button>
+                  <form th:action="@{|/ui/products/${p.id}/delete|}" method="post" onsubmit="return confirm('Delete this product?');" style="display:inline;">
+                    <button class="btn btn-outline-danger" type="submit">Delete</button>
                   </form>
                 </div>
               </td>
