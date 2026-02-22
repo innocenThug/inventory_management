@@ -60,7 +60,7 @@
   </select>
 
   <!-- Select Page -->
-  <input class="form-control w-auto" type="text" name="page" th:value="${page}+1" placeholder="Go To Page">
+  <input class="form-control w-auto" type="hidden" name="page" th:value="${page}" placeholder="Go To Page">
 
   <!-- Search Input -->
   <input class="form-control w-auto" name="query" placeholder="Search by SKU or Name" th:value="${query}">
