@@ -1,0 +1,69 @@
+<th:block th:fragment="theme">
+  <style>
+    :root{
+      --ocean-900:#0a2540;
+      --ocean-700:#0b3b66;
+      --ocean-600:#1363aa;
+      --ocean-100:#e7f1ff;
+    }
+
+    body{
+      background: linear-gradient(135deg,#0a2540,#1363aa) !important;
+      color:#fff;
+      min-height:100vh;
+    }
+
+    /* NAVBAR */
+    .navbar,
+    .navbar-ocean{
+      background: rgba(0,0,0,0.2) !important;
+      backdrop-filter: blur(6px);
+      border:none !important;
+    }
+
+    /* MAIN CARD */
+    .card,
+    .card-ocean{
+      background: #ffffff !important;
+      color:#0f172a !important;
+      border-radius: 20px !important;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25) !important;
+      border:none !important;
+    }
+
+    /* TABLE HEADER */
+    table thead{
+      background: var(--ocean-700) !important;
+      color:white !important;
+    }
+
+    /* BUTTONS */
+    .btn-ocean{
+      background: var(--ocean-600) !important;
+      color:white !important;
+      border-radius: 12px !important;
+      padding:8px 16px !important;
+      border:none !important;
+    }
+
+    .btn-ocean-outline{
+      border:2px solid #000 !important;
+      color: var(--ocean-600) !important;
+ 	  background: #ffffff !important;
+  	  border-radius: 12px !important;
+    }
+
+    .btn-ocean-outline:hover{
+      border:2px solid var(--ocean-600) !important;
+      border-radius: 12px !important;
+      background: var(--ocean-600) !important;
+      color:white !important;
+    }
+
+    /* Used in your pages but not defined earlier */
+    .btn-soft{
+      background: rgba(255,255,255,0.85) !important;
+      backdrop-filter: blur(4px);
+    }
+  </style>
+</th:block>

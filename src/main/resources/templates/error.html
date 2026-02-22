@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title th:text="'Error ' + (${status} ?: 500)">Error Page</title>
+
+  <th:block th:replace="~{fragments/theme :: theme}"></th:block>
+
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --border: #e6e8ef;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --warn-bg: #fff7ed;
+      --warn-border: #fed7aa;
+      --link: #111827;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 20px 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .sub {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 10px 14px;
+      margin: 14px 0 16px;
+      padding: 12px 12px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      background: #fbfcff;
+    }
+
+    .label {
+      font-weight: 700;
+      color: #374151;
+    }
+
+    .value code {
+      background: #f3f4f6;
+      padding: 2px 8px;
+      border-radius: 8px;
+      display: inline-block;
+      word-break: break-all;
+    }
+
+    .box {
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-border);
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .msg {
+      margin: 6px 0 0;
+      color: #7c2d12;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .btns {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    a.btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--link);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a.btn:hover { background: #f9fafb; }
+
+    .mini {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card card-ocean">
+      <h1>Something went wrong</h1>
+      <p class="sub">If this keeps happening, copy the details below and share the log/output.</p>
+
+      <div class="grid">
+        <div class="label">Status</div>
+        <div class="value" th:text="${status} ?: 500">500</div>
+
+        <div class="label">Error</div>
+        <div class="value" th:text="${error} ?: 'Internal Server Error'">Internal Server Error</div>
+
+        <div class="label">Path</div>
+        <div class="value"><code th:text="${path} ?: '/'">/</code></div>
+
+        <div class="label">Time</div>
+        <div class="value" th:text="${timeStamp}">-</div>
+      </div>
+
+      <div class="box">
+        <div class="label">Message</div>
+        <p class="msg" th:text="${message} ?: 'Unexpected error occurred.'">
+          Unexpected error occurred.
+        </p>
+      </div>
+
+      <div class="btns">
+        <a class="btn" th:href="@{/ui/products}">Back to Products</a>
+        <a class="btn" th:href="@{/}">Home</a>
+        <a class="btn" href="javascript:history.back()">Go Back</a>
+      </div>
+
+      <div class="mini">
+        Tip: If this happened while loading <code>/favicon.ico</code>, add a favicon in
+        <code>src/main/resources/static/favicon.ico</code> or ignore it.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
