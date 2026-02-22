@@ -14,16 +14,19 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/ui/products")
 public class ProductViewController {
 
     private final ProductService service;
-
+	
+	 @GetMapping("/")
+    public String root() {
+        return "redirect:/products";
+    }
     public ProductViewController(ProductService service) {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/ui/products")
     public String listPage(
             @RequestParam(value = "query", required = false) String query,
             @RequestParam(value = "page", defaultValue = "0") int page,
