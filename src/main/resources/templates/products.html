@@ -58,12 +58,16 @@
         </div>
 
  	<div class="col-12 col-md-6">
-          <input class="form-control" name="query" placeholder="Search by ID, SKU or Name" th:value="${query}" required=true>
+          <input class="form-control" name="query" placeholder="Search by SKU or Name" th:value="${query}" required=true>
         </div>
         
         <div class="col-12 col-md-2 d-grid">
           <button class="btn btn-ocean" type="submit">Search</button>
         </div>
+        
+        <div class="col-12 col-md-2 d-grid">
+ 		 <a class="btn btn-outline-secondary" th:href="@{/ui/products}">Reset</a>
+		</div>
 
         <input type="hidden" name="sortDir" th:value="${sortDir}">
         <input type="hidden" name="page" value="0">
@@ -98,12 +102,12 @@
 
               <td class="text-end">
                 <div class="btn-group btn-group-sm" role="group">
-                  <a class="btn btn-soft btn-outline-primary" th:href="@{|/ui/products/${p.id}/edit|}">Edit</a>
-                  <a class="btn btn-outline-secondary" th:href="@{|/ui/products/${p.id}/stock|}">Stock</a>
+                  <a class="btn btn-ocean-outline me-2" th:href="@{|/ui/products/${p.id}/edit|}">Edit</a>
+                  <a class="btn btn btn-ocean-outline btn-outline-secondary me-2" th:href="@{|/ui/products/${p.id}/stock|}">Stock</a>
 
                   <form th:action="@{|/ui/products/${p.id}/delete|}" method="post"
                         onsubmit="return confirm('Delete this product?');" style="display:inline;">
-                    <button class="btn btn-soft btn-outline-danger" type="submit">Delete</button>
+                    <button class="btn btn-ocean-outline btn-outline-danger" type="submit">Delete</button>
                   </form>
                 </div>
               </td>

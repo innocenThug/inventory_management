@@ -31,8 +31,7 @@
           <span class="badge text-bg-secondary" th:text="${product.sku}">SKU</span>
           <span th:text="${product.name}">Name</span>
         </div>
-        <div class="text-muted small">
-          Current quantity: <span class="fw-semibold" th:text="${product.quantity}">0</span>
+        <div class="text-muted small">Current quantity: <span class="fw-semibold" th:text="${product.quantity}">0</span>
         </div>
       </div>
 
@@ -43,18 +42,8 @@
         </div>
 
         <div class="col-12 col-md-8 d-flex gap-2">
-          <button class="btn btn-ocean"
-                  th:formaction="@{|/ui/products/${product.id}/stock/in|}"
-                  formmethod="post" type="submit">
-            Stock In
-          </button>
-
-          <button class="btn btn-soft btn-outline-primary"
-                  th:formaction="@{|/ui/products/${product.id}/stock/out|}"
-                  formmethod="post" type="submit">
-            Stock Out
-          </button>
-
+          <button class="btn btn-ocean" th:formaction="@{|/ui/products/${product.id}/stock/in|}" formmethod="post" type="submit">Stock In</button>
+          <button class="btn btn-ocean-outline" th:formaction="@{|/ui/products/${product.id}/stock/out|}" formmethod="post" type="submit">Stock Out</button>
           <a class="btn btn-outline-secondary ms-auto" th:href="@{/ui/products}">Cancel</a>
         </div>
       </form>
