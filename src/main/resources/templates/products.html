@@ -47,7 +47,7 @@
   </select>
 
   <!-- Sort Order -->
-  <select class="form-select" name="sortDir">
+  <select class="form-select w-auto" name="sortDir">
    	<option value="asc"  th:selected="${sortDir == null || sortDir == 'asc'}">ASC</option>
     <option value="desc" th:selected="${sortDir == 'desc'}">DESC</option>
   </select>
@@ -60,10 +60,10 @@
   </select>
 
   <!-- Select Page -->
-  <input class="form-control" type="text" name="page" th:value="${page}+1" placeholder="Go To Page">
+  <input class="form-control w-auto" type="text" name="page" th:value="${page}+1" placeholder="Go To Page">
 
   <!-- Search Input -->
-  <input class="form-control" name="query" placeholder="Search by SKU or Name" th:value="${query}">
+  <input class="form-control w-auto" name="query" placeholder="Search by SKU or Name" th:value="${query}">
   <!-- Search Button -->
   <button class="btn btn-ocean" type="submit">Search</button>
 
@@ -100,7 +100,7 @@
               <td class="text-truncate" style="max-width: 260px;" th:text="${p.description}">-</td>
 
               <td class="text-end">
-                <div class="btn-group btn-group-sm" role="group">
+                <div>
                   <a class="btn btn-outline-primary me-2" th:href="@{|/ui/products/${p.id}/edit|}">Edit</a>
                   <a class="btn btn-outline-secondary me-2" th:href="@{|/ui/products/${p.id}/stock|}">Stock</a>
 
